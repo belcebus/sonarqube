@@ -1,4 +1,4 @@
-docker run -d --name sonarqube \
+docker run -d --name sonarqube9x \
            -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true \
            -p 9000:9000 \
            sonarqube:9.9.0-community
@@ -11,12 +11,15 @@ docker run -d --name sonarqube8 \
 
 mvn sonar:sonar \
   -Dsonar.projectKey=java-17 \
-  -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev \
+  -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9000.preview.app.github.dev \
   -Dsonar.login=admin -Dsonar.password=root \
-  -DpomFile=9.x/pom.xml
+  --f 9.x/pom.xml
 
-mvn sonar:sonar \
+mvn clean compile sonar:sonar \
   -Dsonar.projectKey=java-11 \
   -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev \
   -Dsonar.login=admin -Dsonar.password=root \
-  -DpomFile=8.x/pom.xml
+  -f 8.x/pom.xml
+
+
+  
