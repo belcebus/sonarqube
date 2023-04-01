@@ -1,0 +1,6 @@
+projectKey=java-17
+serverUrl=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev
+serverVersion=8.9.0.43852
+dashboardUrl=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev/dashboard?id=java-17
+ceTaskId=AYc8tCmSXX3yfbnpYZSE
+ceTaskUrl=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev/api/ce/task?id=AYc8tCmSXX3yfbnpYZSE
