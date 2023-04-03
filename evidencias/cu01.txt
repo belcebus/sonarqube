@@ -1,0 +1,167 @@
+@belcebus ➜ /workspaces/sonarqube (main) $ rm -rf /home/codespace/.sonar && mvn clean verify sonar:sonar   -Dsonar.projectKey=java-17   -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9000.preview.app.github.dev   -Dsonar.login=admin -Dsonar.password=root   -f java-17/pom.xml
+[INFO] Scanning for projects...
+[WARNING] The artifact org.codehaus.mojo:sonar-maven-plugin:jar:3.9.1.2184 has been relocated to org.sonarsource.scanner.maven:sonar-maven-plugin:jar:3.9.1.2184: SonarQube plugin was moved to SonarSource organisation
+[INFO] 
+[INFO] -------------------------< com.test:sonartest >-------------------------
+[INFO] Building sonartest 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.1.0:clean (default-clean) @ sonartest ---
+[INFO] Deleting /workspaces/sonarqube/java-17/target
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ sonartest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /workspaces/sonarqube/java-17/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.8.0:compile (default-compile) @ sonartest ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /workspaces/sonarqube/java-17/target/classes
+[INFO] 
+[INFO] --- resources:3.0.2:testResources (default-testResources) @ sonartest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /workspaces/sonarqube/java-17/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.8.0:testCompile (default-testCompile) @ sonartest ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /workspaces/sonarqube/java-17/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.22.1:test (default-test) @ sonartest ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.test.AppTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.06 s - in com.test.AppTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ sonartest ---
+[INFO] Building jar: /workspaces/sonarqube/java-17/target/sonartest-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] -------------------------< com.test:sonartest >-------------------------
+[INFO] Building sonartest 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- sonar:3.9.1.2184:sonar (default-cli) @ sonartest ---
+[INFO] User cache: /home/codespace/.sonar/cache
+[INFO] SonarQube version: 9.9.0.65466
+[INFO] Default locale: "en", source code encoding: "UTF-8"
+[INFO] Load global settings
+[INFO] Load global settings (done) | time=849ms
+[INFO] Server id: 147B411E-AYc9S1vxuzFZafBSLeSl
+[INFO] User cache: /home/codespace/.sonar/cache
+[INFO] Load/download plugins
+[INFO] Load plugins index
+[INFO] Load plugins index (done) | time=514ms
+[INFO] Load/download plugins (done) | time=11724ms
+[INFO] Process project properties
+[INFO] Process project properties (done) | time=15ms
+[INFO] Execute project builders
+[INFO] Execute project builders (done) | time=3ms
+[INFO] Project key: java-17
+[INFO] Base dir: /workspaces/sonarqube/java-17
+[INFO] Working dir: /workspaces/sonarqube/java-17/target/sonar
+[INFO] Load project settings for component key: 'java-17'
+[INFO] Load project settings for component key: 'java-17' (done) | time=407ms
+[INFO] Load quality profiles
+[INFO] Load quality profiles (done) | time=682ms
+[INFO] Load active rules
+[INFO] Load active rules (done) | time=11872ms
+[INFO] Load analysis cache
+[INFO] Load analysis cache (125 bytes) | time=206ms
+[WARNING] Property 'sonar.password' is deprecated. It will not be supported in the future. Please instead use the 'sonar.login' parameter with a token.
+[INFO] Load project repositories
+[INFO] Load project repositories (done) | time=352ms
+[INFO] Indexing files...
+[INFO] Project configuration:
+[INFO] 4 files indexed
+[INFO] 0 files ignored because of scm ignore settings
+[INFO] Quality profile for java: Sonar way
+[INFO] Quality profile for xml: Sonar way
+[INFO] ------------- Run sensors on module sonartest
+[INFO] Load metrics repository
+[INFO] Load metrics repository (done) | time=452ms
+[INFO] Sensor JavaSensor [java]
+[INFO] Configured Java source version (sonar.java.source): 17
+[INFO] JavaClasspath initialization
+[INFO] JavaClasspath initialization (done) | time=6ms
+[INFO] JavaTestClasspath initialization
+[INFO] JavaTestClasspath initialization (done) | time=1ms
+[INFO] Server-side caching is enabled. The Java analyzer will not try to leverage data from a previous analysis.
+[INFO] Using ECJ batch to parse 2 Main java source files with batch size 51 KB.
+[INFO] Starting batch processing.
+[INFO] The Java analyzer cannot skip unchanged files in this context. A full analysis is performed for all files.
+[INFO] 100% analyzed
+[INFO] Batch processing: Done.
+[INFO] Did not optimize analysis for any files, performed a full analysis for all 2 files.
+[INFO] Using ECJ batch to parse 1 Test java source files with batch size 51 KB.
+[INFO] Starting batch processing.
+[INFO] 100% analyzed
+[INFO] Batch processing: Done.
+[INFO] Did not optimize analysis for any files, performed a full analysis for all 1 files.
+[INFO] No "Generated" source files to scan.
+[INFO] Sensor JavaSensor [java] (done) | time=2401ms
+[INFO] Sensor JaCoCo XML Report Importer [jacoco]
+[INFO] 'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+[INFO] No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+[INFO] Sensor JaCoCo XML Report Importer [jacoco] (done) | time=8ms
+[INFO] Sensor CSS Rules [javascript]
+[INFO] No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+[INFO] Sensor CSS Rules [javascript] (done) | time=5ms
+[INFO] Sensor C# Project Type Information [csharp]
+[INFO] Sensor C# Project Type Information [csharp] (done) | time=2ms
+[INFO] Sensor C# Analysis Log [csharp]
+[INFO] Sensor C# Analysis Log [csharp] (done) | time=42ms
+[INFO] Sensor C# Properties [csharp]
+[INFO] Sensor C# Properties [csharp] (done) | time=0ms
+[INFO] Sensor SurefireSensor [java]
+[INFO] parsing [/workspaces/sonarqube/java-17/target/surefire-reports]
+[INFO] Sensor SurefireSensor [java] (done) | time=161ms
+[INFO] Sensor HTML [web]
+[INFO] Sensor HTML [web] (done) | time=4ms
+[INFO] Sensor XML Sensor [xml]
+[INFO] 1 source file to be analyzed
+[INFO] 1/1 source file has been analyzed
+[INFO] Sensor XML Sensor [xml] (done) | time=314ms
+[INFO] Sensor TextAndSecretsSensor [text]
+[INFO] 4 source files to be analyzed
+[INFO] 4/4 source files have been analyzed
+[INFO] Sensor TextAndSecretsSensor [text] (done) | time=28ms
+[INFO] Sensor VB.NET Project Type Information [vbnet]
+[INFO] Sensor VB.NET Project Type Information [vbnet] (done) | time=1ms
+[INFO] Sensor VB.NET Analysis Log [vbnet]
+[INFO] Sensor VB.NET Analysis Log [vbnet] (done) | time=18ms
+[INFO] Sensor VB.NET Properties [vbnet]
+[INFO] Sensor VB.NET Properties [vbnet] (done) | time=0ms
+[INFO] Sensor IaC Docker Sensor [iac]
+[INFO] 0 source files to be analyzed
+[INFO] 0/0 source files have been analyzed
+[INFO] Sensor IaC Docker Sensor [iac] (done) | time=103ms
+[INFO] ------------- Run sensors on project
+[INFO] Sensor Analysis Warnings import [csharp]
+[INFO] Sensor Analysis Warnings import [csharp] (done) | time=2ms
+[INFO] Sensor Zero Coverage Sensor
+[INFO] Sensor Zero Coverage Sensor (done) | time=12ms
+[INFO] Sensor Java CPD Block Indexer
+[INFO] Sensor Java CPD Block Indexer (done) | time=24ms
+[INFO] CPD Executor 2 files had no CPD blocks
+[INFO] CPD Executor Calculating CPD for 0 files
+[INFO] CPD Executor CPD calculation finished (done) | time=0ms
+[INFO] Analysis report generated in 198ms, dir size=132.3 kB
+[INFO] Analysis report compressed in 51ms, zip size=22.7 kB
+[INFO] Analysis report uploaded in 419ms
+[INFO] ANALYSIS SUCCESSFUL, you can find the results at: https://belcebus-obscure-trout-5gp5g4rx97527r9r-9000.preview.app.github.dev/dashboard?id=java-17
+[INFO] Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+[INFO] More about the report processing at https://belcebus-obscure-trout-5gp5g4rx97527r9r-9000.preview.app.github.dev/api/ce/task?id=AYdHr5FgO4kpn_qEY1HF
+[INFO] Analysis total time: 23.543 s
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  46.446 s
+[INFO] Finished at: 2023-04-03T15:15:01Z
+[INFO] ------------------------------------------------------------------------

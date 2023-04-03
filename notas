@@ -6,8 +6,10 @@ resultado:
 
 version de java jdk 11
 programa 17
+programa 11
 pom: 11
-sonar: 8.9.x
-resultado: 
+pom: 17
+sonar: 9.x
+resultado: OK 
 
 version de java 17

@@ -1,0 +1,77 @@
+@belcebus ➜ /workspaces/sonarqube (main) $ sdk default java 11.0.18-ms && rm -rf /home/codespace/.sonar && mvn clean sonar:sonar \
+>   -Dsonar.projectKey=java-17 \
+>   -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9000.preview.app.github.dev \
+>   -Dsonar.login=admin -Dsonar.password=root \
+>   -f java-17/pom.xml
+
+Default java version set to 11.0.18-ms
+[INFO] Scanning for projects...
+[WARNING] The artifact org.codehaus.mojo:sonar-maven-plugin:jar:3.9.1.2184 has been relocated to org.sonarsource.scanner.maven:sonar-maven-plugin:jar:3.9.1.2184: SonarQube plugin was moved to SonarSource organisation
+[INFO] 
+[INFO] -------------------------< com.test:sonartest >-------------------------
+[INFO] Building sonartest 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.1.0:clean (default-clean) @ sonartest ---
+[INFO] 
+[INFO] -------------------------< com.test:sonartest >-------------------------
+[INFO] Building sonartest 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- sonar:3.9.1.2184:sonar (default-cli) @ sonartest ---
+[INFO] User cache: /home/codespace/.sonar/cache
+[INFO] SonarQube version: 9.9.0.65466
+[INFO] Default locale: "en", source code encoding: "UTF-8"
+[INFO] Load global settings
+[INFO] Load global settings (done) | time=1278ms
+[INFO] Server id: 147B411E-AYc9S1vxuzFZafBSLeSl
+[INFO] User cache: /home/codespace/.sonar/cache
+[INFO] Load/download plugins
+[INFO] Load plugins index
+[INFO] Load plugins index (done) | time=736ms
+[INFO] Load/download plugins (done) | time=12148ms
+[INFO] Process project properties
+[INFO] Process project properties (done) | time=26ms
+[INFO] Execute project builders
+[INFO] Execute project builders (done) | time=2ms
+[INFO] Project key: java-17
+[INFO] Base dir: /workspaces/sonarqube/java-17
+[INFO] Working dir: /workspaces/sonarqube/java-17/target/sonar
+[INFO] Load project settings for component key: 'java-17'
+[INFO] Load project settings for component key: 'java-17' (done) | time=553ms
+[INFO] Load quality profiles
+[INFO] Load quality profiles (done) | time=836ms
+[INFO] Load active rules
+[INFO] Load active rules (done) | time=12476ms
+[INFO] Load analysis cache
+[INFO] Load analysis cache (125 bytes) | time=222ms
+[WARNING] Property 'sonar.password' is deprecated. It will not be supported in the future. Please instead use the 'sonar.login' parameter with a token.
+[INFO] Load project repositories
+[INFO] Load project repositories (done) | time=354ms
+[INFO] Indexing files...
+[INFO] Project configuration:
+[INFO] 4 files indexed
+[INFO] 0 files ignored because of scm ignore settings
+[INFO] Quality profile for java: Sonar way
+[INFO] Quality profile for xml: Sonar way
+[INFO] ------------- Run sensors on module sonartest
+[INFO] Load metrics repository
+[INFO] Load metrics repository (done) | time=434ms
+[INFO] Sensor JavaSensor [java]
+[INFO] Configured Java source version (sonar.java.source): 17
+[INFO] JavaClasspath initialization
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  42.617 s
+[INFO] Finished at: 2023-04-03T15:40:37Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar (default-cli) on project sonartest: Your project contains .java files, please provide compiled classes with sonar.java.binaries property, or exclude them from the analysis with sonar.exclusions property. -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
