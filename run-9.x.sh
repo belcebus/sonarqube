@@ -19,10 +19,12 @@ docker run -d --name sonarqube9x \
 # Set default java version to 17
 sdk default java 17.0.6-ms
 
+export SONAR9xURL="http://localhost:9000"
+
 # CU: 01 - Run Build and SonarScanner using maven for app in java-17 using java17.
 rm -rf /home/codespace/.sonar && mvn clean verify sonar:sonar \
   -Dsonar.projectKey=java-17 \
-  -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9000.preview.app.github.dev \
+  -Dsonar.host.url=$SONAR9xURL \
   -Dsonar.login=admin -Dsonar.password=root \
   -f java-17/pom.xml
 
@@ -32,7 +34,7 @@ rm -rf /home/codespace/.sonar && mvn clean verify sonar:sonar \
 # CU: 02 - Run only SonarScanner using maven for app in java-17 using java17.
 sdk default java 17.0.6-ms && rm -rf /home/codespace/.sonar && mvn clean sonar:sonar \
   -Dsonar.projectKey=java-17 \
-  -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9000.preview.app.github.dev \
+  -Dsonar.host.url=$SONAR9xURL \
   -Dsonar.login=admin -Dsonar.password=root \
   -f java-17/pom.xml
 
@@ -42,7 +44,7 @@ sdk default java 17.0.6-ms && rm -rf /home/codespace/.sonar && mvn clean sonar:s
 # CU: 03 - Run build and SonarScanner using maven for app in java-11 using java17.
 sdk default java 17.0.6-ms && rm -rf /home/codespace/.sonar && mvn clean verify sonar:sonar \
   -Dsonar.projectKey=java-11 \
-  -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9000.preview.app.github.dev \
+  -Dsonar.host.url=$SONAR9xURL \
   -Dsonar.login=admin -Dsonar.password=root \
   -f java-11/pom.xml
 
@@ -52,7 +54,7 @@ sdk default java 17.0.6-ms && rm -rf /home/codespace/.sonar && mvn clean verify 
 # CU: 04 - Run only SonarScanner using maven for app in java-11 using java17.
 sdk default java 17.0.6-ms && rm -rf /home/codespace/.sonar && mvn clean sonar:sonar \
   -Dsonar.projectKey=java-11 \
-  -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9000.preview.app.github.dev \
+  -Dsonar.host.url=$SONAR9xURL \
   -Dsonar.login=admin -Dsonar.password=root \
   -f java-11/pom.xml
 
@@ -65,7 +67,7 @@ sdk default java 11.0.18-ms
 # CU: 05 - Run build and SonarScanner using maven for app in java-17 using java11.
 sdk default java 11.0.18-ms && rm -rf /home/codespace/.sonar && mvn clean verify sonar:sonar \
   -Dsonar.projectKey=java-17 \
-  -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9000.preview.app.github.dev \
+  -Dsonar.host.url=$SONAR9xURL \
   -Dsonar.login=admin -Dsonar.password=root \
   -f java-17/pom.xml
 
@@ -75,7 +77,7 @@ sdk default java 11.0.18-ms && rm -rf /home/codespace/.sonar && mvn clean verify
 # CU: 06 - Run only SonarScanner using maven for app in java-17 using java11.
 sdk default java 11.0.18-ms && rm -rf /home/codespace/.sonar && mvn clean sonar:sonar \
   -Dsonar.projectKey=java-17 \
-  -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9000.preview.app.github.dev \
+  -Dsonar.host.url=$SONAR9xURL \
   -Dsonar.login=admin -Dsonar.password=root \
   -f java-17/pom.xml
 
@@ -85,7 +87,7 @@ sdk default java 11.0.18-ms && rm -rf /home/codespace/.sonar && mvn clean sonar:
 # CU: 07 - Run build and SonarScanner using maven for java 11 using java11.
 sdk default java 11.0.18-ms && rm -rf /home/codespace/.sonar && mvn clean verify sonar:sonar \
   -Dsonar.projectKey=java-11 \
-  -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9000.preview.app.github.dev \
+  -Dsonar.host.url=$SONAR9xURL \
   -Dsonar.login=admin -Dsonar.password=root \
   -f java-11/pom.xml
 
@@ -95,7 +97,7 @@ sdk default java 11.0.18-ms && rm -rf /home/codespace/.sonar && mvn clean verify
 # CU: 08 - Run only SonarScanner using maven for java 11 using java11.
 sdk default java 11.0.18-ms && rm -rf /home/codespace/.sonar && mvn clean sonar:sonar \
   -Dsonar.projectKey=java-11 \
-  -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9000.preview.app.github.dev \
+  -Dsonar.host.url=$SONAR9xURL \
   -Dsonar.login=admin -Dsonar.password=root \
   -f java-11/pom.xml
 
@@ -116,12 +118,14 @@ docker run -d --name sonarqube8x \
            -v sonarqube8x_data:/opt/sonarqube/data \
 	         -v sonarqube8x_extensions:/opt/sonarqube/extensions \
 	         -v sonarqube8x_logs:/opt/sonarqube/logs \
-           sonarqube:8.9.10-community
+           sonarqube:8.9.7-community
+
+export SONAR8xURL="http://localhost:9001"
 
 # CU: 09 - Run Build and SonarScanner using maven for app in java-17 using java17.
 sdk default java 17.0.6-ms && rm -rf /home/codespace/.sonar && mvn clean verify sonar:sonar \
   -Dsonar.projectKey=java-17 \
-  -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev \
+  -Dsonar.host.url=$SONAR8xURL \
   -Dsonar.login=admin -Dsonar.password=root \
   -f java-17/pom.xml
 
@@ -131,7 +135,7 @@ sdk default java 17.0.6-ms && rm -rf /home/codespace/.sonar && mvn clean verify 
 # CU: 10 - Run only SonarScanner using maven for app in java-17 using java17.
 sdk default java 17.0.6-ms && rm -rf /home/codespace/.sonar && mvn clean sonar:sonar \
   -Dsonar.projectKey=java-17 \
-  -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev \
+  -Dsonar.host.url=$SONAR8xURL \
   -Dsonar.login=admin -Dsonar.password=root \
   -f java-17/pom.xml
 
@@ -141,7 +145,7 @@ sdk default java 17.0.6-ms && rm -rf /home/codespace/.sonar && mvn clean sonar:s
 # CU: 11 - Run build and SonarScanner using maven for app in java-11 using java17.
 sdk default java 17.0.6-ms && rm -rf /home/codespace/.sonar && mvn clean verify sonar:sonar \
   -Dsonar.projectKey=java-11 \
-  -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev \
+  -Dsonar.host.url=$SONAR8xURL \
   -Dsonar.login=admin -Dsonar.password=root \
   -f java-11/pom.xml
 
@@ -151,7 +155,7 @@ sdk default java 17.0.6-ms && rm -rf /home/codespace/.sonar && mvn clean verify 
 # CU: 12 - Run only SonarScanner using maven for app in java-11 using java17.
 sdk default java 17.0.6-ms && rm -rf /home/codespace/.sonar && mvn clean sonar:sonar \
   -Dsonar.projectKey=java-11 \
-  -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev \
+  -Dsonar.host.url=$SONAR8xURL \
   -Dsonar.login=admin -Dsonar.password=root \
   -f java-11/pom.xml
 
@@ -164,7 +168,7 @@ sdk default java 11.0.18-ms
 # CU: 13 - Run build and SonarScanner using maven for app in java-17 using java11.
 sdk default java 11.0.18-ms && rm -rf /home/codespace/.sonar && mvn clean verify sonar:sonar \
   -Dsonar.projectKey=java-17 \
-  -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev \
+  -Dsonar.host.url=$SONAR8xURL \
   -Dsonar.login=admin -Dsonar.password=root \
   -f java-17/pom.xml
 
@@ -174,7 +178,7 @@ sdk default java 11.0.18-ms && rm -rf /home/codespace/.sonar && mvn clean verify
 # CU: 14 - Run only SonarScanner using maven for app in java-17 using java11.
 sdk default java 11.0.18-ms && rm -rf /home/codespace/.sonar && mvn clean sonar:sonar \
   -Dsonar.projectKey=java-17 \
-  -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev \
+  -Dsonar.host.url=$SONAR8xURL \
   -Dsonar.login=admin -Dsonar.password=root \
   -f java-17/pom.xml
 
@@ -184,7 +188,7 @@ sdk default java 11.0.18-ms && rm -rf /home/codespace/.sonar && mvn clean sonar:
 # CU: 15 - Run build and SonarScanner using maven for java 11 using java11.
 sdk default java 11.0.18-ms && rm -rf /home/codespace/.sonar && mvn clean verify sonar:sonar \
   -Dsonar.projectKey=java-11 \
-  -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev \
+  -Dsonar.host.url=$SONAR8xURL \
   -Dsonar.login=admin -Dsonar.password=root \
   -f java-11/pom.xml
 
@@ -194,7 +198,7 @@ sdk default java 11.0.18-ms && rm -rf /home/codespace/.sonar && mvn clean verify
 # CU: 16 - Run only SonarScanner using maven for java 11 using java11.
 sdk default java 11.0.18-ms && rm -rf /home/codespace/.sonar && mvn clean sonar:sonar \
   -Dsonar.projectKey=java-11 \
-  -Dsonar.host.url=https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev \
+  -Dsonar.host.url=$SONAR8xURL \
   -Dsonar.login=admin -Dsonar.password=root \
   -f java-11/pom.xml
 
@@ -206,7 +210,7 @@ sdk default java 11.0.18-ms && rm -rf /home/codespace/.sonar && mvn clean sonar:
 sdk default java 17.0.6-ms && rm -rf /home/codespace/.sonar && mvn clean verify -f java-17/pom.xml && \
 docker run \
     --rm \
-    -e SONAR_HOST_URL="https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev" \
+    -e SONAR_HOST_URL="$SONAR8xURL" \
     -e SONAR_SCANNER_OPTS="-Dsonar.projectKey=java-17 -Dsonar.java.binaries=/usr/src/target/classes" \
     -e SONAR_LOGIN="admin" \
     -e SONAR_PASSWORD="root" \
@@ -220,7 +224,7 @@ docker run \
 sdk default java 11.0.18-ms && rm -rf /home/codespace/.sonar && mvn clean verify -f java-11/pom.xml && \
 docker run \
     --rm \
-    -e SONAR_HOST_URL="https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev" \
+    -e SONAR_HOST_URL="$SONAR8xURL" \
     -e SONAR_SCANNER_OPTS="-Dsonar.projectKey=java-11 -Dsonar.java.binaries=/usr/src/target/classes" \
     -e SONAR_LOGIN="admin" \
     -e SONAR_PASSWORD="root" \
@@ -235,7 +239,7 @@ docker run \
 sdk default java 11.0.18-ms && rm -rf /home/codespace/.sonar && mvn clean verify -f java-17/pom.xml && \
 docker run \
     --rm \
-    -e SONAR_HOST_URL="https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev" \
+    -e SONAR_HOST_URL="$SONAR8xURL" \
     -e SONAR_SCANNER_OPTS="-Dsonar.projectKey=java-17 -Dsonar.java.binaries=/usr/src/target/classes" \
     -e SONAR_LOGIN="admin" \
     -e SONAR_PASSWORD="root" \
@@ -249,7 +253,7 @@ docker run \
 sdk default java 17.0.6-ms && rm -rf /home/codespace/.sonar && mvn clean verify -f java-11/pom.xml && \
 docker run \
     --rm \
-    -e SONAR_HOST_URL="https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev" \
+    -e SONAR_HOST_URL="$SONAR8xURL" \
     -e SONAR_SCANNER_OPTS="-Dsonar.projectKey=java-11 -Dsonar.java.binaries=/usr/src/target/classes" \
     -e SONAR_LOGIN="admin" \
     -e SONAR_PASSWORD="root" \
@@ -268,7 +272,7 @@ docker run \
 
 docker run \
     --rm \
-    -e SONAR_HOST_URL="https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev" \
+    -e SONAR_HOST_URL="$SONAR8xURL" \
     -e SONAR_SCANNER_OPTS="-Dsonar.projectKey=java-11" \
     -e SONAR_LOGIN="admin" \
     -e SONAR_PASSWORD="root" \
