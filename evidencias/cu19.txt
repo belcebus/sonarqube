@@ -1,0 +1,41 @@
+@belcebus ➜ /workspaces/sonarqube (main) $ sdk default java 11.0.18-ms && rm -rf /home/codespace/.sonar && mvn clean verify -f java-17/pom.xml && \
+> docker run \
+>     --rm \
+>     -e SONAR_HOST_URL="https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev" \
+>     -e SONAR_SCANNER_OPTS="-Dsonar.projectKey=java-17 -Dsonar.java.binaries=/usr/src/target/classes" \
+>     -e SONAR_LOGIN="admin" \
+>     -e SONAR_PASSWORD="root" \
+>     -v "/workspaces/sonarqube/java-17:/usr/src" \
+>     sonarsource/sonar-scanner-cli
+
+Default java version set to 11.0.18-ms
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< com.test:sonartest >-------------------------
+[INFO] Building sonartest 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.1.0:clean (default-clean) @ sonartest ---
+[INFO] Deleting /workspaces/sonarqube/java-17/target
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ sonartest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /workspaces/sonarqube/java-17/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.8.0:compile (default-compile) @ sonartest ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /workspaces/sonarqube/java-17/target/classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.794 s
+[INFO] Finished at: 2023-04-04T07:31:46Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.0:compile (default-compile) on project sonartest: Fatal error compiling: error: invalid target release: 17 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException

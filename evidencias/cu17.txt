@@ -1,0 +1,170 @@
+@belcebus ➜ /workspaces/sonarqube (main) $ sdk default java 17.0.6-ms && rm -rf /home/codespace/.sonar && mvn clean verify -f java-17/pom.xml && \
+> docker run \
+>     --rm \
+>     -e SONAR_HOST_URL="https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev" \
+>     -e SONAR_SCANNER_OPTS="-Dsonar.projectKey=java-17 -Dsonar.java.binaries=/usr/src/target/classes" \
+>     -e SONAR_LOGIN="admin" \
+>     -e SONAR_PASSWORD="root" \
+>     -v "/workspaces/sonarqube/java-17:/usr/src" \
+>     sonarsource/sonar-scanner-cli
+
+Default java version set to 17.0.6-ms
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< com.test:sonartest >-------------------------
+[INFO] Building sonartest 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.1.0:clean (default-clean) @ sonartest ---
+[INFO] Deleting /workspaces/sonarqube/java-17/target
+[INFO] 
+[INFO] --- resources:3.0.2:resources (default-resources) @ sonartest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /workspaces/sonarqube/java-17/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.8.0:compile (default-compile) @ sonartest ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /workspaces/sonarqube/java-17/target/classes
+[INFO] 
+[INFO] --- resources:3.0.2:testResources (default-testResources) @ sonartest ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /workspaces/sonarqube/java-17/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.8.0:testCompile (default-testCompile) @ sonartest ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /workspaces/sonarqube/java-17/target/test-classes
+[INFO] 
+[INFO] --- surefire:2.22.1:test (default-test) @ sonartest ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.test.AppTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.123 s - in com.test.AppTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.0.2:jar (default-jar) @ sonartest ---
+[INFO] Building jar: /workspaces/sonarqube/java-17/target/sonartest-1.0-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.844 s
+[INFO] Finished at: 2023-04-04T07:11:35Z
+[INFO] ------------------------------------------------------------------------
+INFO: Scanner configuration file: /opt/sonar-scanner/conf/sonar-scanner.properties
+INFO: Project root configuration file: NONE
+INFO: SonarScanner 4.8.0.2856
+INFO: Java 11.0.18 Alpine (64-bit)
+INFO: Linux 5.4.0-1105-azure amd64
+INFO: SONAR_SCANNER_OPTS=-Dsonar.projectKey=java-17 -Dsonar.java.binaries=/usr/src/target/classes
+INFO: User cache: /opt/sonar-scanner/.sonar/cache
+INFO: Analyzing on SonarQube server 8.9.10
+INFO: Default locale: "en_US", source code encoding: "UTF-8" (analysis is platform dependent)
+INFO: Load global settings
+INFO: Load global settings (done) | time=393ms
+INFO: Server id: BF41A1F2-AYdHkbkxC7VQpEWGWyj3
+INFO: User cache: /opt/sonar-scanner/.sonar/cache
+INFO: Load/download plugins
+INFO: Load plugins index
+INFO: Load plugins index (done) | time=251ms
+INFO: Load/download plugins (done) | time=10095ms
+INFO: Process project properties
+INFO: Process project properties (done) | time=2ms
+INFO: Execute project builders
+INFO: Execute project builders (done) | time=4ms
+INFO: Project key: java-17
+INFO: Base dir: /usr/src
+INFO: Working dir: /usr/src/.scannerwork
+INFO: Load project settings for component key: 'java-17'
+INFO: Load project settings for component key: 'java-17' (done) | time=343ms
+INFO: Load quality profiles
+INFO: Load quality profiles (done) | time=455ms
+INFO: Load active rules
+INFO: Load active rules (done) | time=6104ms
+WARN: SCM provider autodetection failed. Please use "sonar.scm.provider" to define SCM of your project, or disable the SCM Sensor in the project settings.
+INFO: Indexing files...
+INFO: Project configuration:
+INFO: 15 files indexed
+INFO: Quality profile for java: Sonar way
+INFO: Quality profile for xml: Sonar way
+INFO: ------------- Run sensors on module java-17
+INFO: Load metrics repository
+INFO: Load metrics repository (done) | time=225ms
+INFO: Sensor JavaSquidSensor [java]
+INFO: Configured Java source version (sonar.java.source): none
+INFO: JavaClasspath initialization
+INFO: JavaClasspath initialization (done) | time=35ms
+INFO: JavaTestClasspath initialization
+INFO: JavaTestClasspath initialization (done) | time=1ms
+INFO: Java Main Files AST scan
+INFO: 3 source files to be analyzed
+INFO: Load project repositories
+INFO: Load project repositories (done) | time=398ms
+INFO: 3/3 source files have been analyzed
+WARN: Dependencies/libraries were not provided for analysis of SOURCE files. The 'sonar.java.libraries' property is empty. Verify your configuration, as you might end up with less precise results.
+WARN: Unresolved imports/types have been detected during analysis. Enable DEBUG mode to see them.
+INFO: Java Main Files AST scan (done) | time=3332ms
+INFO: Java Test Files AST scan
+INFO: 0 source files to be analyzed
+INFO: 0/0 source files have been analyzed
+INFO: Java Test Files AST scan (done) | time=2ms
+INFO: Java Generated Files AST scan
+INFO: 0 source files to be analyzed
+INFO: 0/0 source files have been analyzed
+INFO: Java Generated Files AST scan (done) | time=0ms
+INFO: Sensor JavaSquidSensor [java] (done) | time=4085ms
+INFO: Sensor CSS Rules [cssfamily]
+INFO: No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+INFO: Sensor CSS Rules [cssfamily] (done) | time=1ms
+INFO: Sensor JaCoCo XML Report Importer [jacoco]
+INFO: 'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+INFO: No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+INFO: Sensor JaCoCo XML Report Importer [jacoco] (done) | time=6ms
+INFO: Sensor C# Project Type Information [csharp]
+INFO: Sensor C# Project Type Information [csharp] (done) | time=1ms
+INFO: Sensor C# Properties [csharp]
+INFO: Sensor C# Properties [csharp] (done) | time=2ms
+INFO: Sensor SurefireSensor [java]
+INFO: parsing [/usr/src/target/surefire-reports]
+INFO: Sensor SurefireSensor [java] (done) | time=249ms
+INFO: Sensor JavaXmlSensor [java]
+INFO: 2 source files to be analyzed
+INFO: 2/2 source files have been analyzed
+INFO: Sensor JavaXmlSensor [java] (done) | time=976ms
+INFO: Sensor HTML [web]
+INFO: Sensor HTML [web] (done) | time=8ms
+INFO: Sensor XML Sensor [xml]
+INFO: 2 source files to be analyzed
+INFO: 2/2 source files have been analyzed
+INFO: Sensor XML Sensor [xml] (done) | time=291ms
+INFO: Sensor VB.NET Project Type Information [vbnet]
+INFO: Sensor VB.NET Project Type Information [vbnet] (done) | time=4ms
+INFO: Sensor VB.NET Properties [vbnet]
+INFO: Sensor VB.NET Properties [vbnet] (done) | time=11ms
+INFO: ------------- Run sensors on project
+INFO: Sensor Zero Coverage Sensor
+INFO: Sensor Zero Coverage Sensor (done) | time=46ms
+INFO: Sensor Java CPD Block Indexer
+INFO: Sensor Java CPD Block Indexer (done) | time=20ms
+INFO: SCM Publisher No SCM system was detected. You can use the 'sonar.scm.provider' property to explicitly specify it.
+INFO: CPD Executor 3 files had no CPD blocks
+INFO: CPD Executor Calculating CPD for 0 files
+INFO: CPD Executor CPD calculation finished (done) | time=0ms
+INFO: Analysis report generated in 106ms, dir size=111 KB
+INFO: Analysis report compressed in 67ms, zip size=21 KB
+INFO: Analysis report uploaded in 242ms
+INFO: ANALYSIS SUCCESSFUL, you can browse https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev/dashboard?id=java-17
+INFO: Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+INFO: More about the report processing at https://belcebus-obscure-trout-5gp5g4rx97527r9r-9001.preview.app.github.dev/api/ce/task?id=AYdLG_Q0Wva6ewBqUeCd
+INFO: Analysis total time: 17.880 s
+INFO: ------------------------------------------------------------------------
+INFO: EXECUTION SUCCESS
+INFO: ------------------------------------------------------------------------
+INFO: Total time: 34.019s
+INFO: Final Memory: 18M/64M
+INFO: ------------------------------------------------------------------------
