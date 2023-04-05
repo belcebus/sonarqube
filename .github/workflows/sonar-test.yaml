@@ -42,12 +42,13 @@ jobs:
 
       - name: Run Sonarqube analysis Java 17
         run: |
+              mvn --version -X
               mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar \
                 -Dsonar.host.url=http://localhost:9000 \
                 -Dsonar.login=admin -Dsonar.password=root \
                 -Dsonar.projectKey=java-17 \
                 -f java-17/pom.xml
-                
+
       - uses: actions/setup-java@v3
         name: Install Java 11
         with:
@@ -56,6 +57,7 @@ jobs:
           
       - name: Run Sonarqube analysis Java 11
         run: |
+              mvn --version -X
               mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar \
                 -Dsonar.host.url=http://localhost:9000 \
                 -Dsonar.login=admin -Dsonar.password=root \
