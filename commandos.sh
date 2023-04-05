@@ -279,3 +279,9 @@ docker run \
     -v "/workspaces/sonarqube/java-11:/usr/src" \
     sonarsource/sonar-scanner-cli
 
+docker volume rm  sonarqube9x_data
+docker volume rm sonarqube9x_logs
+docker volume rm sonarqube9x_extensions
+docker volume rm sonarqube8x_data
+docker volume rm sonarqube8x_logs
+docker volume rm sonarqube8x_extensions
