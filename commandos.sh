@@ -285,3 +285,6 @@ docker volume rm sonarqube9x_extensions
 docker volume rm sonarqube8x_data
 docker volume rm sonarqube8x_logs
 docker volume rm sonarqube8x_extensions
+
+
+while true; do sleep 3 && docker container logs sonarqube9x && docker container logs sonarqube9x 2>&1 | grep -e "SonarQube is up" -e "SonarQube is operational" && break; done

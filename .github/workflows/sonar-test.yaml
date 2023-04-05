@@ -8,8 +8,7 @@ jobs:
     strategy:
       matrix:
         java: [ 17, 11 ]
-        sonarqube: [ 8.9.7]
-        #sonarqube: [ 8.9.7 , 9.9.0]
+        sonarqube: [ 8.9.7 , 9.9.0]
     runs-on: 'ubuntu-latest'
     steps:
       - name: Checkout
@@ -33,7 +32,7 @@ jobs:
 
       - name: Wait docker start
         run: |
-              while true; do sleep 10 && docker container logs sonarqube${{ matrix.sonarqube }} && docker container logs sonarqube${{ matrix.sonarqube }} 2>&1 | grep "SonarQube is up" && break; done
+              while true; do sleep 10 && docker container logs sonarqube${{ matrix.sonarqube }} && docker container logs sonarqube${{ matrix.sonarqube }} 2>&1 | grep -e "SonarQube is up" -e "SonarQube is operational" || grep "SonarQube is operational" && break; done
 
       - name: Change default password
         run: |
