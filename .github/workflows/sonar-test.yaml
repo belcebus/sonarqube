@@ -1,8 +1,9 @@
 name: Sonarqube versions tests
-workflow_dispatch:
+on:
+  workflow_dispatch:
 
 jobs:
-  build-and-sonar-docker-8.x:
+  build-and-sonar-docker-8:
     name: Sonarque in Docker (8.9.7)
     runs-on: 'ubuntu-latest'
     steps:
