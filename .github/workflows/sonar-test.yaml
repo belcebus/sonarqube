@@ -4,7 +4,7 @@ on:
 
 jobs:
   build-and-sonar-docker-8:
-    name: Sonarque in Docker (8.9.7)
+    name: SQ ${{ matrix.sonarqube }} & Java ${{ matrix.java }}
     strategy:
       matrix:
         java: [ 17, 11 ]
