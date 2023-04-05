@@ -1,0 +1,48 @@
+name: Sonarqube versions tests
+workflow_dispatch:
+
+jobs:
+  build-and-sonar-docker-8.x:
+    name: Sonarque in Docker (8.9.7)
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
+      - name: Create Sonarque volumes
+        run: |
+                docker volume create --name sonarqube8x_data
+                docker volume create --name sonarqube8x_logs
+                docker volume create --name sonarqube8x_extensions
+
+      - name: Run Sonarqube 8.9.7 container 
+        run: |
+                docker run -d --name sonarqube8x \
+                  -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true \
+                  -p 9000:9000 \
+                  -v sonarqube8x_data:/opt/sonarqube/data \
+                  -v sonarqube8x_extensions:/opt/sonarqube/extensions \
+                  -v sonarqube8x_logs:/opt/sonarqube/logs \
+                  sonarqube:8.9.7-community
+
+      - name: Wait docker start
+        run: |
+              while true; do sleep 10 && docker container logs sonarqube8x && docker container logs sonarqube8x 2>&1 | grep "SonarQube is up" && break; done
+
+      - name: Change default password
+        run: |
+              curl -u admin:admin -X POST "http://localhost:9000/api/users/change_password?login=admin&previousPassword=admin&password=root"
+
+      - name: Run Sonarqube analysis
+        run: |
+              mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar \
+                -Dsonar.host.url=http://localhost:9000 \
+                -Dsonar.login=root -Dsonar.password=admin \
+                -Dsonar.projectKey=java-17 \
+                -f java-17/pom.xml
+         
