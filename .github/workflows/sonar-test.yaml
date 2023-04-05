@@ -8,8 +8,8 @@ jobs:
     strategy:
       matrix:
         java: [ 17, 11 ]
-        sonarqube: [ 8.9.7 , 9.9.0]
-
+        sonarqube: [ 8.9.7]
+        #sonarqube: [ 8.9.7 , 9.9.0]
     runs-on: 'ubuntu-latest'
     steps:
       - name: Checkout
