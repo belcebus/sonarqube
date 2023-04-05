@@ -17,23 +17,23 @@ jobs:
 
       - name: Create Sonarque volumes
         run: |
-                docker volume create --name sonarqube8x_data
-                docker volume create --name sonarqube8x_logs
-                docker volume create --name sonarqube8x_extensions
+                docker volume create --name sonarqube${{ matrix.sonarqube }}_data
+                docker volume create --name sonarqube${{ matrix.sonarqube }}_logs
+                docker volume create --name sonarqube${{ matrix.sonarqube }}_extensions
 
-      - name: Run Sonarqube 8.9.7 container 
+      - name: Run Sonarqube ${{ matrix.sonarqube }}-community container 
         run: |
-                docker run -d --name sonarqube8x \
+                docker run -d --name sonarqube${{ matrix.sonarqube }} \
                   -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true \
                   -p 9000:9000 \
-                  -v sonarqube8x_data:/opt/sonarqube/data \
-                  -v sonarqube8x_extensions:/opt/sonarqube/extensions \
-                  -v sonarqube8x_logs:/opt/sonarqube/logs \
+                  -v sonarqube${{ matrix.sonarqube }}_data:/opt/sonarqube/data \
+                  -v sonarqube${{ matrix.sonarqube }}_extensions:/opt/sonarqube/extensions \
+                  -v sonarqube${{ matrix.sonarqube }}_logs:/opt/sonarqube/logs \
                   sonarqube:${{ matrix.sonarqube }}-community
 
       - name: Wait docker start
         run: |
-              while true; do sleep 10 && docker container logs sonarqube8x && docker container logs sonarqube8x 2>&1 | grep "SonarQube is up" && break; done
+              while true; do sleep 10 && docker container logs sonarqube${{ matrix.sonarqube }} && docker container logs sonarqube${{ matrix.sonarqube }} 2>&1 | grep "SonarQube is up" && break; done
 
       - name: Change default password
         run: |
